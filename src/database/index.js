@@ -5,9 +5,10 @@ import User from '../models/Users';
 import Players from '../models/Players';
 import Teams from '../models/Teams';
 import Matches from '../models/Matches';
+import MatchesPlayers from '../models/MatchesPlayers';
 import Confrontations from '../models/Confrontations';
 
-const models = [User, Teams, Players, Matches, Confrontations];
+const models = [User, Teams, Players, Matches, MatchesPlayers, Confrontations];
 
 class Database {
   constructor() {

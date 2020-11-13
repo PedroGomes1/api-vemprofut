@@ -2,11 +2,11 @@ import Teams from '../models/Teams';
 
 class TeamsController {
   async store(req, res) {
-    const { teams, match_id } = req.body;
+    const { teams, quantity, match_id } = req.body;
 
     const formattedTeams = teams.map((team) => ({
       name: team,
-      quantity: 5,
+      quantity,
       match_id,
     }));
 

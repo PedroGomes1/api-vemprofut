@@ -7,8 +7,8 @@ class Players extends Model {
         name: Sequelize.STRING,
         year: Sequelize.INTEGER,
         position: Sequelize.STRING,
-        team_id: Sequelize.INTEGER,
-        match_id: Sequelize.INTEGER,
+        is_active: Sequelize.BOOLEAN,
+        user_id: Sequelize.INTEGER,
       },
       {
         sequelize,
@@ -19,8 +19,7 @@ class Players extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Teams, { foreignKey: 'team_id', as: 'team' });
-    this.belongsTo(models.Matches, { foreignKey: 'match_id', as: 'matches' });
+    this.belongsTo(models.Matches, { foreignKey: 'user_id', as: 'users' });
   }
 }
 

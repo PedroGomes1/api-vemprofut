@@ -1,27 +1,25 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable('players', {
+    return queryInterface.createTable('matches_players', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      year: {
+      match_id: {
         type: Sequelize.INTEGER,
+        references: { model: 'matches', key: 'id' },
         allowNull: false,
       },
-      position: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      user_id: {
+      player_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'users', key: 'id' },
+        references: { model: 'players', key: 'id' },
+        allowNull: false,
+      },
+      team_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'teams', key: 'id' },
         allowNull: false,
       },
       created_at: {
@@ -35,6 +33,6 @@ module.exports = {
     });
   },
   down: async (queryInterface) => {
-    return queryInterface.dropTable('players');
+    return queryInterface.dropTable('matches_players');
   },
 };

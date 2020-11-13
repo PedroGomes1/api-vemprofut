@@ -1,14 +1,15 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.addColumn('teams', 'quantity', {
-      type: Sequelize.INTEGER,
+    return queryInterface.addColumn('players', 'is_active', {
+      type: Sequelize.BOOLEAN,
       onUpdate: 'CASCADE',
       onDelete: 'SET NULL',
+      defaultValue: true,
       allowNull: true,
     });
   },
 
   down: (queryInterface) => {
-    return queryInterface.removeColumn('teams', 'quantity');
+    return queryInterface.removeColumn('players', 'is_active');
   },
 };
