@@ -1,0 +1,74 @@
+<style>
+  .wrapper {
+    padding: 20px;
+    font-family: 'Arial'
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .wrapper table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+  }
+
+  .wrapper table th,
+  td {
+    text-align: center;
+    padding: 1rem;
+    border: 1px solid black;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    text-align: center;
+
+    font-size: 20px;
+
+    height: 30px;
+    padding: 10px;
+  }
+</style>
+
+<div class="wrapper">
+  <h1>Lista de jogadores relacionados - {{ tableData.[0].matches.name }} </h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Time</th>
+        <th>Posição</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each tableData }}
+      <tr key={player.id}>
+        <td>{{../prefix}} {{ players.name }}</td>
+        <td>{{../prefix}} {{ players.year }}</td>
+        <td>{{../prefix}} {{ team.name }}</td>
+        <td>{{../prefix}} {{ players.position }}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <h1>Confrontos</h1>
+
+  <ul>
+    {{#each confrontations }}
+    <li>
+      <strong>{{../prefix}} {{ teamone.name }}</strong>
+      <span> x </span>
+      <strong> {{../prefix}} {{ teamtwo.name }}</strong>
+    </li>
+    {{/each}}
+  </ul>
+</div>

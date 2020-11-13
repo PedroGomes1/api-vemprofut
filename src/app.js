@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import { resolve } from 'path';
 import routes from './routes';
-
 import './database';
 
 class App {
@@ -11,7 +11,13 @@ class App {
 
     this.server.use(express.json());
     this.server.use(cors());
+    this.staticfiles();
     this.routes();
+  }
+
+  staticfiles() {
+    // Gera o arquivo estático para ser acessado no navegador
+    this.server.use('/pdf', express.static(resolve(__dirname, 'reports')));
   }
 
   routes() {
