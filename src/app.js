@@ -10,7 +10,7 @@ class App {
     this.server.listen(3333);
 
     this.server.use(express.json());
-    this.server.use(cors());
+    this.server.use('*', cors());
     this.staticfiles();
     this.routes();
   }
